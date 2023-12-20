@@ -1,1 +1,26 @@
-# This is my readme file
+# This is my tic_tac_toe application readme.md file!
+
+## About
+The project is just a very basic tic tac toe game coded in HTML, JavaScript and CSS.
+
+![Screenshot of the app's page](https://imgur.com/a/7gWZ56d)
+
+![Wireframe of the JavaScript aspect of the project]()
+
+## Getting Started
+Download Instructions:
+
+Download the repo at [Github](https://github.com/yangzhie/tictactoe)
+
+> $ git clone tic_tac_toe
+> $ cd tic_tac_toe
+> $ node tic_tac_toe.js
+
+To play, press any random box on the game board and that will be counted as a player 1 move.
+On the second click, it will be player 2's move and the game will continue in that fashion until
+the game is either won by a party or drawn.
+
+## Next Steps
+Items that still need to be worked on: 
+- Javascript code
+- Upgrading the CSS to not be basic
