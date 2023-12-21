@@ -5,7 +5,7 @@ The project is just a very basic tic tac toe game coded in HTML, JavaScript and 
 
 ![Screenshot of the app's page](https://imgur.com/a/7gWZ56d)
 
-![Wireframe of the JavaScript aspect of the project]()
+![Wireframe of the JavaScript aspect of the project](https://imgur.com/a/u7c9eJw)
 
 ## Getting Started
 Download Instructions:
