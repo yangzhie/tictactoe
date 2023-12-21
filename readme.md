@@ -5,9 +5,9 @@ The project is just a very basic tic tac toe game coded in HTML, JavaScript and 
 
 ![Screenshot of the game](image-1.png)
 
-(![Wireframe](image.png))
+![Wireframe](image.png)
 
-![Link to the game](https://yangzhie.github.io/tictactoe/)
+[Link to the game](https://yangzhie.github.io/tictactoe/)
 
 ## Getting Started
 Download Instructions:
