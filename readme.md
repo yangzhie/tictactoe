@@ -3,17 +3,22 @@
 ## About
 The project is just a very basic tic tac toe game coded in HTML, JavaScript and CSS.
 
-![Screenshot of the app's page](https://imgur.com/a/7gWZ56d)
+![Screenshot of the game](image-1.png)
 
-![Wireframe of the JavaScript aspect of the project](https://imgur.com/a/u7c9eJw)
+(![Wireframe](image.png))
+
+![Link to the game](https://yangzhie.github.io/tictactoe/)
 
 ## Getting Started
 Download Instructions:
 
-Download the repo at [Github](https://github.com/yangzhie/tictactoe)
+Download the repo at [repository](https://github.com/yangzhie/tictactoe)
 
+How to download the repo:
 > $ git clone tic_tac_toe
+
 > $ cd tic_tac_toe
+
 > $ node tic_tac_toe.js
 
 To play, press any random box on the game board and that will be counted as a player 1 move.
@@ -22,5 +27,5 @@ the game is either won by a party or drawn.
 
 ## Next Steps
 Items that still need to be worked on: 
-- Javascript code
-- Upgrading the CSS to not be basic
+- ~~Javascript code~~
+- ~~Upgrading the CSS to not be basic~~
