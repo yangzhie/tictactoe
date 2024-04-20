@@ -3,42 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Sonic Tic-Tac-Toe</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1 class="title">Tic Tac Toe</h1>
-    <div class="game">
-        <div class="turn-status">
-            Player 1's Turn
+    <div class="main">
+        <header>
+            <div class="game-title">
+                <img src="images/TIC-TAC-TOE-21-04-2024-removebg-preview.png" alt="">
+                <div class="music-icon">
+                    <img id="play-music" src="images/play.png" alt="">
+                    <img id="mute-music" src="images/mute.0png" alt="">
+                </div>
+            </div>
+
+            <h3>Round <span id="round-count">1</span></h3>
+
+        </header>
+
+        <div class="game-wrapper">
+            <div class="message-wrapper">
+                <div class="avatar-wrapper">
+                    <img id="sonic" src="images/sonic-gif.gif" alt="" class="avatar-choices">
+                    <img id="amy" src="images/amy-gif.gif" alt="" class="avatar-choices">
+                    <img id="shadow" src="images/shadow-gif.gif" alt="" class="avatar-choices">
+                    <img id="knuckles" src="images/knuckles-gif.gif" alt="" class="avatar-choices">
+                </div>
+                <div class="pick-turn">
+                    <img id="player1-turn" src="" alt="">
+                    <img id="player2-turn" src="" alt="">
+                </div>
+                <div class="message">Enter name: Player 1</div>
+                <div class="button">
+                    <button class="next-round-btn">Next Round</button>
+                    <button class="reset-btn">Restart</button>
+                </div>
+            </div>
+            <div class="board">
+                <div data-num="1"></div>
+                <div data-num="2"></div>
+                <div data-num="3"></div>
+                <div data-num="4"></div>
+                <div data-num="5"></div>
+                <div data-num="6"></div>
+                <div data-num="7"></div>
+                <div data-num="8"></div>
+                <div data-num="9"></div>
+            </div>
         </div>
 
-        <div class="board">
-            <div class="box" data-box="1"></div>
-            <div class="box" data-box="2"></div>
-            <div class="box" data-box="3"></div>
-            <div class="box" data-box="4"></div>
-            <div class="box" data-box="5"></div>
-            <div class="box" data-box="6"></div>
-            <div class="box" data-box="7"></div>
-            <div class="box" data-box="8"></div>
-            <div class="box" data-box="9"></div>
+        <div class="player-details">
+            <div class="player1">
+                <div class="player1-name-hearts">
+                    <img src="images/ring.gif" alt="" class="active-hearts">
+                    <img src="images/ring.gif" alt="" class="active-hearts">
+                    <img src="images/ring.gif" alt="" class="active-hearts">
+                    <input class="player-name-input" type="text" placeholder="Player 1">
+                </div>
+                <img src="images/sonic-gif.gif" alt="" class="player1-avatar">
+            </div>
+            
+            <div class="player2">
+                <div class="player2-name-hearts">
+                    <input class="player-name-input" type="text" placeholder="Player 2">
+                    <img src="images/ring.gif" alt="" class="active-hearts">
+                    <img src="images/ring.gif" alt="" class="active-hearts">
+                    <img src="images/ring.gif" alt="" class="active-hearts">
+                </div>
+                <img src="images/amy-gif.gif" alt="" class="player2-avatar">
+            </div>
         </div>
 
-        <div class="counter">
-            <p>Player 1 Wins: <span class="p1-wins">0</span></p>
-            <p>Draws: <span class="draws">0</span></p>
-            <p>Player 2 Wins: <span class="p2-wins">0</span></p>
-        </div>
-
-        <div class="button">
-            <button class="restart-button">Restart</button>
-        </div>
+        <audio id="background-music" autoplay loop>
+            <source src="sound/Sonic The Hedgehog OST - Green Hill Zone.mp4" type="audio/wav">
+        </audio>
     </div>
-
-    <script src="app.js"></script>
 </body>
 </html>

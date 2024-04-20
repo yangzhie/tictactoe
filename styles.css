@@ -1,59 +1,441 @@
 * {
-    border-style: border-box;
+    box-sizing: border-box;
+    font-family: 'VT323', monospace;
 }
 
 body {
-    background-color: gray;
+    background-image: url(images/background-sonic.png);
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
 }
 
-.title {
-    font-family: 'Press Start 2P', sans-serif;
-    text-align: center;
-    margin: 20px 0px 20px 0px;
-    font-size: 40px;
-}
-
-.turn-status {
-    font-family: 'Press Start 2P', sans-serif;
-    text-align: center;
-    margin: 15px 0px;
-    font-size: 20px;
-}
-
-.counter {
-    font-family: 'Press Start 2P', sans-serif;
-    text-align: center;
-}
-
-.button {
-    text-align: center;
-}
-
-button {
-    height: 30px;
-    font-family: 'Press Start 2P', sans-serif;
-    background-color: mistyrose;
-}
-
-.board {
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-    justify-items: center;
+.game-title {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
     align-items: center;
-    border: 5px solid black;
-    background-color: gray;
+    flex-wrap: wrap;
 }
 
-.box {
-    width: 80px;
-    height: 80px;
-    background: transparent;
+.music-icon {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#play-music,
+#mute-music {
+    width: 3rem;
+}
+
+header {
+    text-align: center;
+}
+
+.game-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
-    border: 3px solid black;
+}
+
+h1,
+h3 {
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: .3vw;
+}
+
+h1 {
+    font-size: 3.5vw;
+    color: #ffdd35;
+    text-shadow: 4px 2px 0px rgba(168, 119, 71, 0.84);
+}
+
+h3 {
+    color: #5C5C5C;
+    font-size: 2vw;
+}
+
+.message-wrapper {
+    text-align: center;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.23);
+    width: 100%;
+}
+
+.message {
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 999;
+    color: #ffe100db;
+    text-shadow: 4px 2px 0px rgba(168, 119, 71, 0.9);
+    background-color: rgba(163, 219, 255, 0.8);
+    padding: 10px 0 15px;
+    letter-spacing: .3vw;
+}
+
+.message-wrapper img {
+    width: 10rem;
+}
+
+#sonic {
+    width: 150px;
+    height: 150px;
+}
+
+#amy {
+    width: 250px;
+    height: 250px;
+}
+
+#shadow {
+    width: 210px;
+    height: 210px;
+}
+
+#knuckles {
+    width: 180px;
+    height: 230px;
+}
+
+button {
+    margin: 10px 25px;
+    background-color: #63ceff;
+    border-radius: 12px;
+    border: 5px solid #62c6f5;
+    font-size: 1.8vw;
+    width: 200px;
+    height: 50px;
+    box-shadow: 0 5px 0 0#5eb4db;
+    color: #3d3d3d;
+}
+
+button:hover {
+    transform: scale(1.5);
+}
+
+.next-round-btn {
+    display: none;
+}
+
+.reset-btn {
+    display: none;
+}
+
+.board {
+    width: 490px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px;
+    background-image: url(images/grid.png);
+    background-size: cover;
+}
+
+/* .board div {
+    width: 150px;
+    height: 150px;
+    background-size: 135px;
+    background-repeat: no-repeat;
+    background-position: center;
+} */
+
+.player-details {
+    display: flex;
+    justify-content: space-around;
+}
+
+input {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin: 0 10px;
+    box-shadow: inset 2px 1px 1px 0;
+}
+
+.player2 input {
+    text-align: right
+}
+
+.active-hearts {
+    width: 40px;
+    display: inline;
+}
+
+.player-name-input {
+    line-height: 40px;
+    display: inline;
+}
+
+.player1-avatar {
+    width: 150px;
+    display: none;
+}
+
+.player2 {
+    text-align: right;
+}
+
+.player1-name-hearts {
+    display: flex;
+    text-align: left;
+}
+
+.player2-name-hearts {
+    display: flex;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.player2-avatar {
+    width: 150px;
+    display: none;
+    transform: scaleX(-1);
+    margin-left: auto;
+}
+
+
+@media (min-width: 20rem) {
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .main {
+        width: 100%;
+    }
+
+    .music-icon {
+        width: 100%;
+    }
+
+    #play-music,
+    #mute-music {
+        width: 2rem;
+    }
+
+    .message-wrapper img {
+        width: 5rem;
+    }
+
+    .message {
+        font-size: 1.5rem;
+        text-shadow: 2px 1px 0px rgba(168, 119, 71, 0.9);
+        padding: 5px 0 7px;
+    }
+
+    .board {
+        width: 90%;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    .board div {
+        width: 100%;
+        height: 6rem;
+        background-size: 6rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        pointer-events: auto;
+    }
+
+    .next-round-btn,
+    .reset-btn {
+        font-size: 1.2rem;
+    }
+
+    input {
+        font-size: 12px;
+        height: 20px;
+        margin: 0 3px
+    }
+
+    .player-name-input {
+        line-height: 1.5rem;
+    }
+
+    .active-hearts {
+        width: 20px;
+    }
+}
+
+@media (min-width: 24rem) {
+    .main {
+        margin-top: 1rem;
+    }
+
+    .board {
+        width: 24rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    .board div {
+        width: 100%;
+        height: 7rem;
+        background-size: 7rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        pointer-events: auto;
+    }
+
+    .message-wrapper img {
+        width: 10rem;
+    }
+
+}
+
+@media (min-width: 48rem) {
+    .board {
+        width: 40rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    .board div {
+        width: 100%;
+        height: 12rem;
+        background-size: 12rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        pointer-events: auto;
+    }
+}
+
+@media (min-width: 64rem) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    #play-music,
+    #mute-music {
+        width: 3rem;
+    }
+
+    .main {
+        margin-top: 1rem;
+    }
+
+    .board {
+        width: 32rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    .board div {
+        width: 100%;
+        height: 10rem;
+        background-size: 10rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        pointer-events: auto;
+    }
+
+    .message {
+        font-size: 3rem;
+    }
+
+    .next-round-btn,
+    .reset-btn {
+        font-size: 2.5rem;
+    }
+
+    .message-wrapper img {
+        width: 15rem;
+    }
+
+    input {
+        font-size: 2rem;
+        height: 2.5rem;
+        margin: 3px;
+    }
+
+    .active-hearts {
+        width: 3rem;
+    }
+
+    .player1-avatar,
+    .player2-avatar {
+        width: 12rem;
+    }
+
+}
+
+
+@media (min-width: 90rem) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    #play-music,
+    #mute-music {
+        width: 2rem;
+    }
+
+    .main {
+        margin-top: 1rem;
+    }
+
+    .board {
+        width: 23rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    .board div {
+        width: 100%;
+        height: 6.5rem;
+        background-size: 6.5rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        pointer-events: auto;
+    }
+
+    .message {
+        font-size: 1.5rem;
+    }
+
+    .next-round-btn,
+    .reset-btn {
+        font-size: 1.5srem;
+    }
+
+    .message-wrapper img {
+        width: 15rem;
+    }
+
+    input {
+        font-size: 2rem;
+        height: 2.5rem;
+        margin: 3px;
+    }
+
+    .active-hearts {
+        width: 3rem;
+    }
+
+    .player1-avatar,
+    .player2-avatar {
+        width: 12rem;
+    }
+}
+
+@media (min-width: 100rem) {
+    .main {
+        margin-top: 8rem;
+    }
 }
