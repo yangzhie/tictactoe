@@ -13,12 +13,12 @@ A responsive Tic Tac Toe game with a Sonic The Hedgehog theme. Made using HTML, 
 - background music: play/mute
 
 ## Screenshots
-![Planning](planning.png)
+![Planning](./images/planning.png)
 
-![Main Page](tictactoe1.PNG)
-![Taking Turns](tictactoe2.PNG)
-![In-game](tictactoe3.PNG)
-![Winning Screen](tictactoe4.PNG)
+![Main Page](./images/tictactoe1.PNG)
+![Taking Turns](./images/tictactoe2.PNG)
+![In-game](./images/tictactoe3.PNG)
+![Winning Screen](./images/tictactoe4.PNG)
 
 ## Getting Started
 Download Instructions:
@@ -27,7 +27,9 @@ Download the repo at [repository](https://github.com/yangzhie/tictactoe)
 
 How to download the repo:
 > $ git clone tic_tac_toe
+
 > $ cd tic_tac_toe
+
 > $ node tic_tac_toe.js
 
 ## Next Steps
