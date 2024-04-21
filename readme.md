@@ -1,13 +1,24 @@
-# This is my tic_tac_toe application readme.md file!
+# Tic Tac Toe
 
 ## About
-The project is just a very basic tic tac toe game coded in HTML, JavaScript and CSS.
+A responsive Tic Tac Toe game with a Sonic The Hedgehog theme. Made using HTML, CSS and Vanilla Javascript.
 
-![Screenshot of the game](image-1.png)
+![Link to the game](https://yangzhie.github.io/tictactoe/)
 
-![Wireframe](image.png)
+## Features
+- name inputs
+- round counter
+- who goes first
+- 3 lives to determine who wins
+- background music: play/mute
 
-[Link to the game](https://yangzhie.github.io/tictactoe/)
+## Screenshots
+![Planning](planning.png)
+
+![Main Page](tictactoe1.PNG)
+![Taking Turns](tictactoe2.PNG)
+![In-game](tictactoe3.PNG)
+![Winning Screen](tictactoe4.PNG)
 
 ## Getting Started
 Download Instructions:
@@ -16,14 +27,8 @@ Download the repo at [repository](https://github.com/yangzhie/tictactoe)
 
 How to download the repo:
 > $ git clone tic_tac_toe
-
 > $ cd tic_tac_toe
-
 > $ node tic_tac_toe.js
-
-To play, press any random box on the game board and that will be counted as a player 1 move.
-On the second click, it will be player 2's move and the game will continue in that fashion until
-the game is either won by a party or drawn.
 
 ## Next Steps
 Items that still need to be worked on: 

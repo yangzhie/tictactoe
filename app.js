@@ -75,7 +75,7 @@ function isPlayerOneNameFilled() {
     playerOne.name = playerOneNameElem.value
     toggleAvatarPointerEvent(avatarWrapperElem)
     playerOneNameElem.setAttribute('disabled', true)
-    messageElem.textContent = 'Player 1 choose your avatar'
+    messageElem.textContent = 'Choose avatar: Player 2'
 }
 
 function isPlayerTwoNameFilled() {
@@ -85,7 +85,7 @@ function isPlayerTwoNameFilled() {
     playerTwo.name = playerTwoNameElem.value
     toggleAvatarPointerEvent(avatarWrapperElem)
     playerTwoNameElem.setAttribute('disabled', true)
-    messageElem.textContent = 'Player 2 choose your avatar'
+    messageElem.textContent = 'Choose avatar: Player 2'
 }
 
 function handleSetPlayerAvatar(event) {
@@ -95,7 +95,7 @@ function handleSetPlayerAvatar(event) {
         playerOneAvatarElem.style.display = 'block'
         playerTwoNameElem.removeAttribute('disabled')
         toggleAvatarPointerEvent(avatarWrapperElem)
-        messageElem.textContent = 'Player 2 enter your name below'
+        messageElem.textContent = 'Enter name: Player 2'
     } else {
         playerTwo.avatar = event.target.src
         toggleAvatarPointerEvent(avatarWrapperElem)
@@ -186,3 +186,184 @@ function handleReset() {
 
     isPlayerOneNameFilled()
 }
+
+// other functions
+function toggleMessageElemDisplay() {
+    if (messageWrapperElem.style.display === 'none') {
+        messageWrapperElem.style.display = 'block'
+    } else {
+        messageWrapperElem.style.display = 'none'
+    }
+}
+
+function toggleNextRoundBtnDisplay() {
+    if (nextRoundElem.style.display === 'inline') {
+        nextRoundElem.style.display = 'none'
+    } else {
+        nextRoundElem.style.display = 'inline'
+    }
+}
+
+function toggleResetBtnDisplay() {
+    if (resetElem.style.display === 'inline') {
+        resetElem.style.display = 'none'
+    } else {
+        resetElem.style.display = 'inline'
+    }
+}
+
+function toggleAvatarPointerEvent() {
+    if (avatarWrapperElem.style.pointerEvents === 'auto') {
+        avatarWrapperElem.style.pointerEvents = 'none'
+    } else {
+        avatarWrapperElem.style.pointerEvents = 'auto'
+    }
+}
+
+function startGame() {
+    resetBoxElems()
+    for (let boxElem of boxElems) {
+        boxElem.addEventListener('click', handlePlayerChoice)
+    }
+    toggleMessageElemDisplay()
+    playerOne.hearts = playerOneHpElems.length
+    playerTwo.hearts = playerTwoHpElems.length
+}
+
+function switchPlayer() {
+    if (currentPlayer === playerOne) {
+        currentPlayer = playerTwo
+    } else {
+        currentPlayer = playerOne
+    }
+
+}
+
+function checkForWinningPattern(playerObj) {
+
+    const winningPatterns = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        [1, 4, 7],
+        [2, 5, 8],
+        [3, 6, 9],
+        [1, 5, 9],
+        [3, 5, 7]
+    ]
+
+    for (let winningPattern of winningPatterns) {
+        let matches = 0
+        for (let choiceNum of playerObj.choicesArr) {
+            let numMatch = 0
+            if (winningPattern.includes(choiceNum)) {
+                numMatch++
+            }
+            matches += numMatch
+        }
+        playerObj.matchesArr.push(matches)
+    }
+    return playerObj.matchesArr
+}
+
+function decideWinOrDraw(playerOne, playerTwo) {
+    let winOrDrawMessage = ''
+    nextRoundElem.style.display = 'inline'
+
+    if (playerOne.matchesArr.includes(3)) {
+        playerTwo.hearts--
+        playerTwoHpElems[playerTwo.hearts].style.display = 'none'
+        if (playerTwo.hearts === 0) {
+            gameWinner()
+        } else {
+            for (let boxElem of boxElems) {
+                boxElem.style.pointerEvents = 'none'
+            }
+            playerOne.winOrLoss.push(1)
+            playerTwo.winOrLoss.push(0)
+            messageElem.textContent = `${playerOne.name} won!`
+            playerOneTurnElem.style.display = 'inline'
+            playerTwoTurnElem.style.display = 'none'
+            toggleMessageElemDisplay()
+        }
+        return
+    } else if (playerTwo.matchesArr.includes(3)) {
+        playerOne.hearts--
+        playerOneHpElems[playerOne.hearts].style.display = 'none'
+        if (playerOne.hearts === 0) {
+            gameWinner()
+        } else {
+            for (let boxElem of boxElems) {
+                boxElem.style.pointerEvents = 'none'
+            }
+            playerOne.winOrLoss.push(0)
+            playerTwo.winOrLoss.push(1)
+            messageElem.textContent = `${playerTwo.name} won!`
+            playerOneTurnElem.style.display = 'none'
+            playerTwoTurnElem.style.display = 'inline'
+            toggleMessageElemDisplay()
+        }
+        return
+    } else if (!playerOne.matchesArr.includes(3) && !playerTwo.matchesArr.includes(3) && playerOne.choicesArr.length + playerTwo.choicesArr.length === 9) {
+        for (let boxElem of boxElems) {
+            boxElem.style.pointerEvents = 'none'
+        }
+        playerOne.winOrLoss.push(0)
+        playerTwo.winOrLoss.push(0)
+        playerOneTurnElem.style.display = 'inline'
+        playerTwoTurnElem.style.display = 'inline'
+        messageElem.textContent = 'Draw'
+        toggleMessageElemDisplay()
+        return winOrDrawMessage
+    }
+}
+
+function resetBoxElems() {
+    for (let boxElem of boxElems) {
+        boxElem.style.backgroundImage = ''
+        boxElem.style.pointerEvents = 'auto'
+    }
+}
+
+function resetPlayersChoices() {
+    playerOne.choicesArr.length = 0
+    playerTwo.choicesArr.length = 0
+}
+
+function resetPlayersMatchesArr() {
+    playerOne.matchesArr.length = 0
+    playerTwo.matchesArr.length = 0
+}
+
+function gameWinner() {
+    toggleResetBtnDisplay()
+    toggleNextRoundBtnDisplay()
+    if (playerOne.hearts === 0 || playerTwo.hearts === 0) {
+        resetElem.style.display = 'inline'
+        if (playerOne.hearts === 0) {
+            playerOne.winOrLoss.push(0)
+            playerTwo.winOrLoss.push(1)
+            messageElem.textContent = `${playerTwo.name} won the game!`
+            playerOneTurnElem.style.display = 'none'
+            playerTwoTurnElem.style.display = 'inline'
+            toggleMessageElemDisplay()
+
+        } else {
+            playerOne.winOrLoss.push(1)
+            playerTwo.winOrLoss.push(0)
+            messageElem.textContent = `${playerOne.name} won the game!`
+            playerOneTurnElem.style.display = 'inline'
+            playerTwoTurnElem.style.display = 'none'
+            toggleMessageElemDisplay()
+        }
+    } else {
+        return
+    }
+}
+
+
+// game flow
+playerTwoNameElem.setAttribute('disabled', true)
+toggleAvatarPointerEvent()
+toggleAvatarPointerEvent()
+isPlayerOneNameFilled()
