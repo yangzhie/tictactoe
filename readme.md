@@ -3,8 +3,6 @@
 ## About
 A responsive Tic Tac Toe game with a Sonic The Hedgehog theme. Made using HTML, CSS and Vanilla Javascript.
 
-![Link to the game](https://yangzhie.github.io/tictactoe/)
-
 ## Features
 - name inputs
 - round counter
